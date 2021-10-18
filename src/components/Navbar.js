@@ -77,7 +77,7 @@ const Navbar = () => {
       <MenuBars />
       <NavMenu>
         {menuData.map((item, index) => (
-          <NavMenuLinks to={item.link} key={item.index}>
+          <NavMenuLinks to={item.link} key={index}>
             {item.title}
           </NavMenuLinks>
         ))}
