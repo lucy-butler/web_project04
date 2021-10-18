@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { menuData } from '../data/MenuData';
 import { Button } from './Button';
 import { FaBars } from "react-icons/fa";
+import logoimg from '../images/logo.png';
 
 const Nav = styled.nav`
   display: flex;
@@ -12,7 +13,6 @@ const Nav = styled.nav`
   z-index: 100;
   position: fixed;
   width: 100%;
-  background: blue;
   height: 60px;
 `;
 
@@ -28,18 +28,23 @@ const NavLink = css`
 
 const Logo = styled(Link)`
   ${NavLink}
+  margin: 10px 0;
+  img {
+    width: 80%;
+  }
 `;
 
 const MenuBars = styled(FaBars)`
   display: none;
+  color: #fff;
 
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    width: 40px;
-    height: 40px;
-    top: 0;
-    right: 0;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
     transform: translate(-50%, 25%);
     cursor: pointer;
   }
@@ -48,8 +53,6 @@ const MenuBars = styled(FaBars)`
 const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid red;
-  margin-left: -48px;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -64,17 +67,18 @@ const NabBtn = styled.div`
   display: flex;
   align-items: center;
   margin-right: 24px;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
 `;
 
 
-const Navbar = () => {
+const Navbar = ({toggle}) => {
   return (
     <Nav>
-      <Logo to='/'>LOGO</Logo>
-      <MenuBars />
+      <Logo to='/'><img src={logoimg} alt="logo" /></Logo>
+      <MenuBars onClick={toggle} />
       <NavMenu>
         {menuData.map((item, index) => (
           <NavMenuLinks to={item.link} key={index}>
